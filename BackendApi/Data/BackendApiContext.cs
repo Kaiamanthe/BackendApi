@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using BackendApi.Models;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using BackendApi.Areas.Identity.Data;
 
 namespace BackendApi.Data
 {
-    public class BackendApiContext : DbContext
+    public class BackendApiContext : IdentityDbContext<BackendApiUser>
     {
         public BackendApiContext (DbContextOptions<BackendApiContext> options)
             : base(options)
@@ -77,29 +79,30 @@ namespace BackendApi.Data
 
                 );
 
-            modelBuilder.Entity<DynamicContent>().HasData(
-                    new DynamicContent
-                    {
-                        PostId = 1,
-                        Title = "What does the fox say?",
-                        Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt nibh et nulla pharetra, id euismod velit scelerisque. Ut maximus dui et sem suscipit, a feugiat nisl gravida. Mauris id eros sit amet diam sollicitudin interdum nec at nisl. In ac tortor purus. Sed scelerisque imperdiet lorem in rutrum.",
-                        Author = "Robert"
-                    },
-                    new DynamicContent
-                    {
-                        PostId = 2,
-                        Title = "Top 10 Chess Duels",
-                        Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt nibh et nulla pharetra, id euismod velit scelerisque. Ut maximus dui et sem suscipit, a feugiat nisl gravida. Mauris id eros sit amet diam sollicitudin interdum nec at nisl. In ac tortor purus. Sed scelerisque imperdiet lorem in rutrum.",
-                        Author = "Dillon"
-                    },
-                    new DynamicContent
-                    {
-                        PostId = 3,
-                        Title = "Basketball Top Basket",
-                        Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt nibh et nulla pharetra, id euismod velit scelerisque. Ut maximus dui et sem suscipit, a feugiat nisl gravida. Mauris id eros sit amet diam sollicitudin interdum nec at nisl. In ac tortor purus. Sed scelerisque imperdiet lorem in rutrum.",
-                        Author = "Tyler"
-                    }
-                );
+            //modelBuilder.Entity<DynamicContent>().HasData(
+            //        new DynamicContent
+            //        {
+            //            PostId = 1,
+            //            Title = "What does the fox say?",
+            //            Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt nibh et nulla pharetra, id euismod velit scelerisque. Ut maximus dui et sem suscipit, a feugiat nisl gravida. Mauris id eros sit amet diam sollicitudin interdum nec at nisl. In ac tortor purus. Sed scelerisque imperdiet lorem in rutrum.",
+            //            Author = "Robert"
+            //        },
+            //        new DynamicContent
+            //        {
+            //            PostId = 2,
+            //            Title = "Top 10 Chess Duels",
+            //            Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt nibh et nulla pharetra, id euismod velit scelerisque. Ut maximus dui et sem suscipit, a feugiat nisl gravida. Mauris id eros sit amet diam sollicitudin interdum nec at nisl. In ac tortor purus. Sed scelerisque imperdiet lorem in rutrum.",
+            //            Author = "Dillon"
+            //        },
+            //        new DynamicContent
+            //        {
+            //            PostId = 3,
+            //            Title = "Basketball Top Basket",
+            //            Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt nibh et nulla pharetra, id euismod velit scelerisque. Ut maximus dui et sem suscipit, a feugiat nisl gravida. Mauris id eros sit amet diam sollicitudin interdum nec at nisl. In ac tortor purus. Sed scelerisque imperdiet lorem in rutrum.",
+            //            Author = "Tyler"
+            //        }
+            //    );
+
             modelBuilder.Entity<FeedbackData>().HasData(
                     new FeedbackData
                     {

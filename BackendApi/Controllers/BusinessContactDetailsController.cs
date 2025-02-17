@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BackendApi.Data;
 using BackendApi.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BackendApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class BusinessContactDetailsController : ControllerBase
@@ -22,6 +24,7 @@ namespace BackendApi.Controllers
         }
 
         // GET: api/BusinessContactDetails
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BusinessContactDetails>>> GetBusinessContactDetails()
         {
@@ -29,6 +32,7 @@ namespace BackendApi.Controllers
         }
 
         // GET: api/BusinessContactDetails/5
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<ActionResult<BusinessContactDetails>> GetBusinessContactDetails(int id)
         {
